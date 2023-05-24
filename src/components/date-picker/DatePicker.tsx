@@ -1,5 +1,5 @@
 import { DateCard } from "./DateCard";
-import { DeliveryDate } from "../../../types/common";
+import type { DeliveryDate } from "../../../types/common";
 
 interface DatePickerProps {
   dates: DeliveryDate[] | null;
@@ -7,6 +7,12 @@ interface DatePickerProps {
   onDateSelect: (date: DeliveryDate) => void;
 }
 
+/**
+ * The main component for a date picker with selectable date cards.
+ *
+ * @param {DatePickerProps} props - The component props.
+ * @returns The DatePicker component.
+ */
 const DatePicker = ({ dates, onDateSelect, selectedDate }: DatePickerProps) => {
   const handleDatePick = (date: DeliveryDate) => {
     onDateSelect(date);

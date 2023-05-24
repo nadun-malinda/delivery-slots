@@ -1,18 +1,25 @@
 import { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
+
 import { DeliveryContext } from "@/contexts/DeliveryContext";
 import { useFormData } from "@/hooks/useFormData";
 
+/**
+ * Summary page component.
+ * Displays a summary of the selected delivery information.
+ * Redirects to the home page if required data is missing.
+ */
 const Summary = () => {
-  const { replace } = useRouter();
-  const { selectedDate, selectedTime, inHomeAvailable } =
+  const { selectedDate, selectedTime, inHomeAvailable, isLoading } =
     useContext(DeliveryContext);
+
+  const { replace } = useRouter();
   const { hasAllData } = useFormData();
 
   useEffect(() => {
     // redirect to the home if required data is missing.
-    if (!hasAllData) replace("/", undefined, { shallow: true });
-  }, [replace, hasAllData]);
+    if (!hasAllData && !isLoading) replace("/");
+  }, [hasAllData, isLoading, replace]);
 
   const handleGoBack = () => {
     replace("/");
@@ -34,7 +41,7 @@ const Summary = () => {
           {selectedTime?.startTime} - {selectedTime?.stopTime}
         </p>
       </div>
-      <div className="container mx-auto mt-5 flex h-11 justify-end">
+      <div className="container absolute bottom-4 left-4 right-4 mt-5 flex h-11 w-[calc(100%-2rem)] justify-end">
         <button
           className="rounded-full bg-primary px-4 py-2 text-sm text-white"
           onClick={handleGoBack}

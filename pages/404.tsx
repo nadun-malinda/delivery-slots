@@ -1,3 +1,8 @@
+/**
+ * Custom 404 page component.
+ *
+ * @returns The custom 404 page component.
+ */
 const Custom404 = () => {
   return (
     <div className="container flex h-full items-center justify-center">

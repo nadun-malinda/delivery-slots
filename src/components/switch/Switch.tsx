@@ -7,6 +7,12 @@ interface SwitchProps {
   disabled?: boolean;
 }
 
+/**
+ * Component for a re usable switch toggler.
+ *
+ * @param {SwitchProps} props - The switch component props.
+ * @returns The switch component.
+ */
 const Switch = ({
   checked = false,
   onChange,
@@ -15,6 +21,9 @@ const Switch = ({
 }: SwitchProps) => {
   const [isOn, setIsOn] = useState(checked);
 
+  /**
+   * Handles the toggle action when the switch is toggled.
+   */
   const handleToggle = () => {
     setIsOn(!isOn);
     onChange(!checked);

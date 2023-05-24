@@ -15,6 +15,7 @@ interface DeliveryContextType {
   setSelectedTime: Dispatch<SetStateAction<DeliveryTime | null>>;
   inHomeAvailable: boolean;
   setInHomeAvailable: Dispatch<SetStateAction<boolean>>;
+  isLoading: boolean;
 }
 
 interface DeliveryProviderProps {
@@ -27,13 +28,15 @@ export const DeliveryContext = createContext<DeliveryContextType>({
   selectedTime: null,
   setSelectedTime: () => {},
   inHomeAvailable: false,
-  setInHomeAvailable: () => {}
+  setInHomeAvailable: () => {},
+  isLoading: true
 });
 
 export const DeliveryProvider = ({ children }: DeliveryProviderProps) => {
   const [selectedDate, setSelectedDate] = useState<DeliveryDate | null>(null);
   const [selectedTime, setSelectedTime] = useState<DeliveryTime | null>(null);
   const [inHomeAvailable, setInHomeAvailable] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const storedSelectedDate = getItem(KEY_SELECTED_DATE);
@@ -43,6 +46,7 @@ export const DeliveryProvider = ({ children }: DeliveryProviderProps) => {
     setSelectedDate(storedSelectedDate);
     setSelectedTime(storedSelectedTime);
     setInHomeAvailable(!!storedInHomeAvailable);
+    setIsLoading(false);
   }, []);
 
   return (
@@ -53,7 +57,8 @@ export const DeliveryProvider = ({ children }: DeliveryProviderProps) => {
         setSelectedDate,
         setSelectedTime,
         inHomeAvailable,
-        setInHomeAvailable
+        setInHomeAvailable,
+        isLoading
       }}
     >
       {children}

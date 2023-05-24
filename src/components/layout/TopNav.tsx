@@ -1,3 +1,7 @@
+/**
+ * Component for the top navigation bar.
+ * Renders a navigation bar with a centered title.
+ */
 const TopNav = () => {
   return (
     <nav className="sticky top-0 z-50 h-[60px] bg-primary px-4 py-4">

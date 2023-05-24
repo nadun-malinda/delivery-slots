@@ -1,4 +1,4 @@
-import { DeliveryTime } from "../../../types/common";
+import type { DeliveryTime } from "../../../types/common";
 
 interface TimeItemProps {
   time: DeliveryTime;
@@ -6,6 +6,12 @@ interface TimeItemProps {
   onSelect: (time: DeliveryTime) => void;
 }
 
+/**
+ * Component for displaying a single delivery time item in the time picker.
+ *
+ * @param {TimeItemProps} props - The component props.
+ * @returns The SingleTime component.
+ */
 export const SingleTime = ({ time, isSelected, onSelect }: TimeItemProps) => {
   return (
     <li key={time.deliveryTimeId}>

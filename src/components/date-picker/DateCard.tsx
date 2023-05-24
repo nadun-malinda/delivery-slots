@@ -7,6 +7,12 @@ interface DateCardProps {
   onClick: (date: DeliveryDate) => void;
 }
 
+/**
+ * Component for displaying a date card within the DatePicker.
+ *
+ * @param {DateCardProps} props - The component props.
+ * @returns The DateCard component.
+ */
 export const DateCard = ({
   date,
   selected = false,
