@@ -38,12 +38,14 @@ const TimePicker = ({
   return (
     <ul className="w-full space-y-1">
       {times?.map(time => (
-        <SingleTime
-          key={time.deliveryTimeId}
-          time={time}
-          isSelected={time.deliveryTimeId === selectedTime?.deliveryTimeId}
-          onSelect={onTimeSelect}
-        />
+        <li key={time.deliveryTimeId}>
+          <SingleTime
+            key={time.deliveryTimeId}
+            time={time}
+            isSelected={time.deliveryTimeId === selectedTime?.deliveryTimeId}
+            onSelect={onTimeSelect}
+          />
+        </li>
       ))}
     </ul>
   );
