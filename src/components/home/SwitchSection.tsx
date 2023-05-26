@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { DeliveryContext } from "@/contexts/DeliveryContext";
 import Switch from "@/components/switch/Switch";
 import { setItem } from "@/utils/storage";
-import { KEY_IN_HOME_AVAILABLE } from "@/constants";
+import { KEY_IN_HOME_AVAILABLE, KEY_SELECTED_TIME } from "@/constants";
 
 /**
  * Component for the switch section that allows users
@@ -23,6 +23,7 @@ const SwitchSection = () => {
     setInHomeAvailable(needInHomeDelivery);
     setSelectedTime(null);
     setItem(KEY_IN_HOME_AVAILABLE, needInHomeDelivery);
+    setItem(KEY_SELECTED_TIME, null);
   };
 
   return (
